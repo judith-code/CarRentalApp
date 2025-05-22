@@ -29,12 +29,13 @@ session_start();
         echo '<h4>Email: ' .$_SESSION['email']. '</h4>';
         echo '<h4>Phone Number: ' .$_SESSION['phone']. '</h4>';
         echo "<br>";
-        echo "<h4>You have been successfully registered.'</h4>'"
+        echo "<h4>You have been successfully registered.</h4>"
         ?>
         <div>
             <p>Go 
             <a href="register.php" class='btn btn-info'>Back</a>
-            to registration page</p>
+            to registration page
+            </p>
         </div>
     </div>
 <script src="assets/bootstrap/js/bootstrap.bundle.min.js" ></script>
