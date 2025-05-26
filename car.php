@@ -34,12 +34,6 @@ $selectedCar= $stmt->fetch(PDO::FETCH_ASSOC);
         header("location:cars.php");
         exit();
     };
-    $returndate = $selectedCar['return'] 
-    $rentaldate = 
-    $selected = false;
-    if($selectedCarId){
-    $reurn
-}
 ?>
 
 <!DOCTYPE html>
@@ -51,11 +45,11 @@ $selectedCar= $stmt->fetch(PDO::FETCH_ASSOC);
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <style>
         .container{
-           background-color: yellowgreen ;
+           background-color: grey ;
            border-radius: 8px;
            box-shadow: 0px 4px 15px blue;
-           height: 1100px;
-           width: 800px;
+           height: 1000px;
+           width: 1100px;
            font-family: georgia ;
         }
          .content{
@@ -87,17 +81,28 @@ $selectedCar= $stmt->fetch(PDO::FETCH_ASSOC);
         <div class="form mt-5">
         <h1 class="text-center">Hire your desired car!</h1>
             <form action="processes/hire-process.php" method="post">
+                <input type="hidden" name="car_id" value="<?php echo $selectedCarId ?>">
+                <input type="hidden" name="daily_rate" id="" value="<?php echo $selectedCar['daily_rate'] ?>">
+
+                <input type="hidden" name="rental_date"><br>
+
                 <label for="number">Return Date:</label>
-                <input type="date" name="return_date" id="" required class="form-control">
+                <input type="date" name="return_date" id="" required class="form-control" min= <?= date("Y-m-d"); ?> 
+                max=<?= date('Y-m-d', strtotime('+7 days') ) ?>>
                 <input type="number" name="car_id" class="form-control" value="<?= $selectedCarId ?>" hidden>
+
                 <label for="text">First Name:</label>
                 <input type="text" name="first_name" id="" required class="form-control">
+
                 <label for="text">Last Name:</label>
                 <input type="text" name="last_name" id="" required class="form-control">
+
                 <label for="email">Email Address:</label>
                 <input type="email" name="email" id="" required class="form-control">
+
                 <label for="tel">Phone Number:</label>
                 <input type="tel" name="phone" id="" required class="form-control">
+                
                 <button type="submit" class="btn btn-primary mt-2">Hire</button>
             </form>
     </div>
