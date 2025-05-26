@@ -8,6 +8,8 @@
 //     ['id'=>6, 'make'=> 'Nissan', 'model'=> 'Sentra', 'year'=> 2012, 'daily_rate'=> 30, 'status'=>'rented']
 // ];
 require_once 'config/db-connect.php';
+
+
 $sql = "SELECT * FROM cars";
 $stmt = $pdo->prepare($sql);
 $stmt->execute();
@@ -30,16 +32,14 @@ $cars = $stmt->fetchAll(PDO::FETCH_ASSOC);
         .container{
            border-radius: 8px;
            box-shadow: 0px 4px 10px blue;  
-           height: 1200px;
+           height: 1250px;
            width: 1000px;
            font-family: cursive ;
-        }
-        h1{
-            
         }
     </style>
 </head>
 <body>
+    <?php  include 'component/navbar.php'; ?>
     <div class="container alert-dark mt-5 mb-5 py-5">
         <div>
             <h1 class="text-center text-black">Details Of Cars For Rent</h1>

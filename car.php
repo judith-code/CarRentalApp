@@ -63,7 +63,11 @@ $selectedCar= $stmt->fetch(PDO::FETCH_ASSOC);
     </style>
 </head>
 <body>
+    
     <div class="container  py-1 mt-5 mb-5">
+        <div class='mt-3'>
+            <a href="cars.php" class="btn btn-primary btn-sm">Back to cars list</a>
+        </div>
         <div class="content">
             <h1 class="mt-5">Car Details</h1>
         <h3>Brand: <?php echo $selectedCar['make']  ?></h3>
@@ -74,9 +78,7 @@ $selectedCar= $stmt->fetch(PDO::FETCH_ASSOC);
         <div>
             <img src="assets/images/games_14-wallpaper-1680x1050.jpg" alt="">
         </div>
-        <div class='mt-3'>
-            <a href="cars.php" class="btn btn-primary btn-sm">Back to cars list</a>
-        </div>
+        
         </div>
         <div class="form mt-5">
         <h1 class="text-center">Hire your desired car!</h1>
