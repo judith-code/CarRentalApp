@@ -33,7 +33,7 @@ $_SESSION['phone'] = $_POST['phone'];
 // };   
 
 // //validating for valid phone number
-// if(!preg_match('/^\d{11}$/', $phone)){ 
+// if(!preg_match('/^\d{13}$/', $phone)){ 
 //     header("location:../car.php");
 //     exit(); 
 // };

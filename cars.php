@@ -14,6 +14,7 @@ $availableCars = array_filter($cars, function($car) {
 $rentedCars = array_filter($cars, function($car) {
     return $car['status'] === 'rented';
 });
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,7 +35,23 @@ $rentedCars = array_filter($cars, function($car) {
     </div>
 
     <?php require 'component/navbar.php'; ?>
-    
+   <!--- success message --->
+    <?php if (isset($_SESSION['success_message'])): ?>
+    <div class="alert alert-success alert-dismissible fade show m-3" role="alert">
+        <?= htmlspecialchars($_SESSION['success_message']) ?>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <?php unset($_SESSION['success_message']); ?>
+<?php endif; ?>
+
+<?php if (isset($_SESSION['error_message'])): ?>
+    <div class="alert alert-danger alert-dismissible fade show m-3" role="alert">
+        <?= htmlspecialchars($_SESSION['error_message']) ?>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <?php unset($_SESSION['error_message']); ?>
+<?php endif; ?>
+
     <div class="main-container">
         <div class="header-section">
             <h1 class="header-title">
@@ -123,7 +140,7 @@ $rentedCars = array_filter($cars, function($car) {
                                     data-make="<?= htmlspecialchars($car['make']) ?>"
                                     data-search="<?= htmlspecialchars(strtolower($car['make'] . ' ' . $car['model'])) ?>">
                                     <td>
-                                        <span class="fw-bold">#<?= htmlspecialchars($car['id']) ?></span>
+                                        <span class="fw-bold"><?= htmlspecialchars($car['id']) ?></span>
                                     </td>
                                     <td>
                                         <div class="car-make"><?= htmlspecialchars($car['make']) ?></div>

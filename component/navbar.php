@@ -40,18 +40,19 @@
                             </a>
                         </li>
                         <li class="nav-item dropdown">
-                          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a>
+                          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">. . . more</a>
                         <ul class="dropdown-menu">
-                          <li><a class="dropdown-item" href="#">Action</a></li>
-                          <li><a class="dropdown-item" href="#">Another action</a></li>
+                          <li><a class="dropdown-item" href="login.php">Login</a></li>
+                          <li><a class="dropdown-item" href="about.php">About Us</a></li>
+                          <li><a class="dropdown-item" href="terms.php">T & C</a></li>
                           <li><hr class="dropdown-divider"></li>
-                          <li><a class="dropdown-item" href="#">Something else here</a></li>
+                          <li><a class="dropdown-item" href="admin.php">Admin</a></li>
                         </ul>
                         </li>
                     </ul>
                     
                     <a href="cars.php" class="nav-cta">
-                        <i class="fas fa-calendar-check"></i> Book Now
+                        <i class="fas fa-calendar-check"></i> Rent Now
                     </a>
                 </div>
             </div>
