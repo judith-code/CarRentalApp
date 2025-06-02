@@ -34,6 +34,8 @@ $selectedCar= $stmt->fetch(PDO::FETCH_ASSOC);
         header("location:cars.php");
         exit();
     };
+    $success = "Hired successfully!";
+
 ?>
 
 <!DOCTYPE html>
@@ -44,17 +46,7 @@ $selectedCar= $stmt->fetch(PDO::FETCH_ASSOC);
     <title>Car details</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <style>
-        .container{
-           background-color: grey ;
-           border-radius: 8px;
-           box-shadow: 0px 4px 15px blue;
-           height: 1000px;
-           width: 1100px;
-           font-family: georgia ;
-        }
-         .content{
-           text-align: center;
-        }
+       
         img{
             height: 130px;
             width: 250px;
@@ -63,7 +55,8 @@ $selectedCar= $stmt->fetch(PDO::FETCH_ASSOC);
     </style>
 </head>
 <body>
-    
+        <?php  require 'component/navbar.php'; ?>
+
     <div class="container  py-1 mt-5 mb-5">
         <div class='mt-3'>
             <a href="cars.php" class="btn btn-primary btn-sm">Back to cars list</a>
@@ -76,7 +69,7 @@ $selectedCar= $stmt->fetch(PDO::FETCH_ASSOC);
         <h3>Daily Rate: $<?php echo $selectedCar['daily_rate'] ?></h3>
         <h3>Status: <?php echo $selectedCar['status'] ?></h3>
         <div>
-            <img src="assets/images/games_14-wallpaper-1680x1050.jpg" alt="">
+            <img src="<?php $selectedCar['id']  ?>" alt="">
         </div>
         
         </div>
@@ -88,27 +81,28 @@ $selectedCar= $stmt->fetch(PDO::FETCH_ASSOC);
 
                 <input type="hidden" name="rental_date"><br>
 
-                <label for="number">Return Date:</label>
+                <label for="number" class="form-label">Return Date:</label>
                 <input type="date" name="return_date" id="" required class="form-control" min= <?= date("Y-m-d"); ?> 
                 max=<?= date('Y-m-d', strtotime('+7 days') ) ?>>
                 <input type="number" name="car_id" class="form-control" value="<?= $selectedCarId ?>" hidden>
 
-                <label for="text">First Name:</label>
+                <label for="text" class="form-label">First Name:</label>
                 <input type="text" name="first_name" id="" required class="form-control">
 
-                <label for="text">Last Name:</label>
+                <label for="text" class="form-label">Last Name:</label>
                 <input type="text" name="last_name" id="" required class="form-control">
 
-                <label for="email">Email Address:</label>
+                <label for="email" class="form-label">Email Address:</label>
                 <input type="email" name="email" id="" required class="form-control">
 
-                <label for="tel">Phone Number:</label>
+                <label for="tel" class="form-label">Phone Number:</label>
                 <input type="tel" name="phone" id="" required class="form-control">
-                
                 <button type="submit" class="btn btn-primary mt-2">Hire</button>
             </form>
     </div>
     </div>
+            <?php  require 'component/footer.php'; ?>
+
     
     <script src="assets/bootstrap/js/bootstrap.bundle.min.js" ></script>
 </body>

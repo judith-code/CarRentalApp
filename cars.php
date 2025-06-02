@@ -14,6 +14,7 @@ $sql = "SELECT * FROM cars";
 $stmt = $pdo->prepare($sql);
 $stmt->execute();
 $cars = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,14 +33,14 @@ $cars = $stmt->fetchAll(PDO::FETCH_ASSOC);
         .container{
            border-radius: 8px;
            box-shadow: 0px 4px 10px blue;  
-           height: 1250px;
+           height: 1550px;
            width: 1000px;
            font-family: cursive ;
         }
     </style>
 </head>
 <body>
-    <?php  include 'component/navbar.php'; ?>
+    <?php  require 'component/navbar.php'; ?>
     <div class="container alert-dark mt-5 mb-5 py-5">
         <div>
             <h1 class="text-center text-black">Details Of Cars For Rent</h1>
@@ -86,6 +87,8 @@ $cars = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </table>
         </div>
     </div>
-    <script src="assets/bootstrap/js/bootstrap.bundle.min.js" ></script>
+            <?php  require 'component/footer.php'; ?>
+
+    <script src="assets/bootstrap/js/bootstrap.bundle.min.js" >
 </body>
 </html>

@@ -1,6 +1,7 @@
 <?php 
 session_start();
 require '../config/db-connect.php';
+
 $car_id = $_POST['car_id'];
 $first_name = $_POST['first_name'];
 $last_name = $_POST['last_name'];
