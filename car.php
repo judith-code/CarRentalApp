@@ -1,13 +1,4 @@
 <?php
-// $cars = [
-//     ['id'=>1, 'make'=> 'Totota', 'model'=> 'corolla', 'year'=> 2021, 'daily_rate'=> 50, 'status'=>'available'],
-//     ['id'=>2, 'make'=> 'Totota', 'model'=> 'Camry', 'year'=> 2000, 'daily_rate'=> 20, 'status'=>'rented'],
-//     ['id'=>3, 'make'=> 'Benz', 'model'=> 'Mercedez', 'year'=> 2012, 'daily_rate'=> 40, 'status'=>'rented'],
-//     ['id'=>4, 'make'=> 'Toyota', 'model'=> 'Land corolla', 'year'=> 2000, 'daily_rate'=> 25, 'status'=>'available'],
-//     ['id'=>5, 'make'=> 'Lamborgini', 'model'=> 'Urus', 'year'=> 2013, 'daily_rate'=> 20, 'status'=>'available'],
-//     ['id'=>6, 'make'=> 'Nissan', 'model'=> 'Sentra', 'year'=> 2012, 'daily_rate'=> 30, 'status'=>'rented']
-
-// ];
 $selectedCarId = $_GET['id'] ;
 
 require_once 'config/db-connect.php';
@@ -16,26 +7,21 @@ $stmt = $pdo->prepare($sql);
 $stmt->execute([$selectedCarId]);
 $selectedCar= $stmt->fetch(PDO::FETCH_ASSOC);
 
-
- if(!isset($_GET['id']) || !is_numeric($_GET['id'])){
+if(!isset($_GET['id']) || !is_numeric($_GET['id'])){
     header("location: cars.php");
     exit();
- };
-    // $selectedCar = array_filter($cars, function($car) {
-    //     return $car['id'] == $_GET['id'];
-    // });
-    // $selectedCar = reset($selectedCar);
+};
 
-    if((!$selectedCar)){
-        header("location:cars.php");
-        exit();
-    };
-    if(($_GET['id']) > 1000){
-        header("location:cars.php");
-        exit();
-    };
-    $success = "Hired successfully!";
+if((!$selectedCar)){
+    header("location:cars.php");
+    exit();
+};
 
+if(($_GET['id']) > 1000){
+    header("location:cars.php");
+    exit();
+};
+$success = "Hired successfully!";
 ?>
 
 <!DOCTYPE html>
@@ -43,67 +29,98 @@ $selectedCar= $stmt->fetch(PDO::FETCH_ASSOC);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Car details</title>
+    <title>Car Details</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+
     <style>
-       
-        img{
-            height: 130px;
-            width: 250px;
-            border-radius: 5px;
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .card {
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border: none;
+            border-radius: 12px;
+        }
+        .car-image {
+            height: 180px;
+            width: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #004085;
         }
     </style>
 </head>
 <body>
-        <?php  require 'component/navbar.php'; ?>
+    <?php  require 'component/navbar.php'; ?>
 
-    <div class="container  py-1 mt-5 mb-5">
-        <div class='mt-3'>
-            <a href="cars.php" class="btn btn-primary btn-sm">Back to cars list</a>
+    <div class="container py-5">
+        <div class="mb-3">
+            <a href="cars.php" class="btn btn-outline-secondary">&larr; Back to Cars List</a>
         </div>
-        <div class="content">
-            <h1 class="mt-5">Car Details</h1>
-        <h3>Brand: <?php echo $selectedCar['make']  ?></h3>
-        <h3> Model:  <?php echo $selectedCar['model'] ?></h3>
-        <h3>Year: <?php echo $selectedCar['year'] ?></h3>
-        <h3>Daily Rate: $<?php echo $selectedCar['daily_rate'] ?></h3>
-        <h3>Status: <?php echo $selectedCar['status'] ?></h3>
-        <div>
-            <img src="<?php $selectedCar['id']  ?>" alt="">
+
+        <div class="card p-4">
+            <h2 class="mb-4">Car Details</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="uploads/<?php echo $selectedCar['image'] ?? 'default.jpg'; ?>" alt="Car Image" class="car-image">
+                </div>
+                <div class="col-md-6">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><strong>Brand:</strong> <?php echo $selectedCar['make']; ?></li>
+                        <li class="list-group-item"><strong>Model:</strong> <?php echo $selectedCar['model']; ?></li>
+                        <li class="list-group-item"><strong>Year:</strong> <?php echo $selectedCar['year']; ?></li>
+                        <li class="list-group-item"><strong>Daily Rate:</strong> $<?php echo $selectedCar['daily_rate']; ?></li>
+                        <li class="list-group-item"><strong>Status:</strong> <?php echo ucfirst($selectedCar['status']); ?></li>
+                    </ul>
+                </div>
+            </div>
         </div>
-        
-        </div>
-        <div class="form mt-5">
-        <h1 class="text-center">Hire your desired car!</h1>
+
+        <div class="card mt-5 p-4">
+            <h3 class="text-center mb-4">Hire This Car</h3>
             <form action="processes/hire-process.php" method="post">
                 <input type="hidden" name="car_id" value="<?php echo $selectedCarId ?>">
-                <input type="hidden" name="daily_rate" id="" value="<?php echo $selectedCar['daily_rate'] ?>">
+                <input type="hidden" name="daily_rate" value="<?php echo $selectedCar['daily_rate'] ?>">
 
-                <input type="hidden" name="rental_date"><br>
+                <div class="mb-3">
+                    <label for="return_date" class="form-label">Return Date</label>
+                    <input type="date" name="return_date" id="return_date" class="form-control" required min="<?= date('Y-m-d'); ?>" max="<?= date('Y-m-d', strtotime('+7 days')) ?>">
+                </div>
 
-                <label for="number" class="form-label">Return Date:</label>
-                <input type="date" name="return_date" id="" required class="form-control" min= <?= date("Y-m-d"); ?> 
-                max=<?= date('Y-m-d', strtotime('+7 days') ) ?>>
-                <input type="number" name="car_id" class="form-control" value="<?= $selectedCarId ?>" hidden>
+                <div class="mb-3">
+                    <label for="first_name" class="form-label">First Name</label>
+                    <input type="text" name="first_name" id="first_name" class="form-control" required>
+                </div>
 
-                <label for="text" class="form-label">First Name:</label>
-                <input type="text" name="first_name" id="" required class="form-control">
+                <div class="mb-3">
+                    <label for="last_name" class="form-label">Last Name</label>
+                    <input type="text" name="last_name" id="last_name" class="form-control" required>
+                </div>
 
-                <label for="text" class="form-label">Last Name:</label>
-                <input type="text" name="last_name" id="" required class="form-control">
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email Address</label>
+                    <input type="email" name="email" id="email" class="form-control" required>
+                </div>
 
-                <label for="email" class="form-label">Email Address:</label>
-                <input type="email" name="email" id="" required class="form-control">
+                <div class="mb-3">
+                    <label for="phone" class="form-label">Phone Number</label>
+                    <input type="tel" name="phone" id="phone" class="form-control" required>
+                </div>
 
-                <label for="tel" class="form-label">Phone Number:</label>
-                <input type="tel" name="phone" id="" required class="form-control">
-                <button type="submit" class="btn btn-primary mt-2">Hire</button>
+                <button type="submit" class="btn btn-primary w-100">Confirm Hire</button>
             </form>
+        </div>
     </div>
-    </div>
-            <?php  require 'component/footer.php'; ?>
 
-    
-    <script src="assets/bootstrap/js/bootstrap.bundle.min.js" ></script>
+    <?php  require 'component/footer.php'; ?>
+    <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
-</html> 
+</html>

@@ -1,16 +1,17 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>home</title>
+    <title>Home</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/home.css">
 </head>
 <body>
     <!-- Navigation -->
-    <?php  require 'component/navbar.php'; ?>
+    <?php require 'component/navbar.php'; ?>
 
     <!-- Hero Section -->
     <section class="hero" id="home">
@@ -18,11 +19,8 @@
             <h1>Find the Perfect Ride for Every Journey</h1>
             <p>Premium car rental experience with unmatched convenience, reliability, and competitive pricing. Your adventure starts here.</p>
             <div class="hero-buttons">
-                <a href="cars" class="btn btn-primary">
-                    <i class="fas fa-car"></i> Book a Car
-                </a>
-                <a href="#locations" class="btn btn-secondary">
-                    <i class="fas fa-map-marker-alt"></i> View Locations
+                <a href="cars.php" class="btn btn-primary">
+                    <i class="fas fa-car"></i> Rent a Car
                 </a>
             </div>
         </div>
@@ -96,47 +94,52 @@
             <div class="cars-grid">
                 <div class="car-card fade-in">
                     <div class="car-image">
-                        <i class="fas fa-car"></i>
+                        <img src="carimages/corolla.avif" alt="Toyota Corolla" style="height: 150px; border-radius: 10px;">
                     </div>
                     <div class="car-info">
                         <div class="car-name">Toyota Corolla</div>
-                        <div class="car-price">From ₦30,000/day</div>
+                        <div class="car-price">From $100.00/day</div>
                         <div class="car-features">
                             <span><i class="fas fa-users"></i> 5 Seats</span>
                             <span><i class="fas fa-cog"></i> Auto</span>
                             <span><i class="fas fa-gas-pump"></i> Fuel Efficient</span>
                         </div>
+                        <a href="car.php?id=1">View</a>
                     </div>
                 </div>
                 <div class="car-card fade-in">
                     <div class="car-image">
-                        <i class="fas fa-car"></i>
+                        <img src="carimages/civic.avif" alt="Honda Civic" style="height: 150px; border-radius: 10px;">
                     </div>
                     <div class="car-info">
                         <div class="car-name">Honda Civic</div>
-                        <div class="car-price">From ₦28,000/day</div>
+                        <div class="car-price">From $180.00/day</div>
                         <div class="car-features">
                             <span><i class="fas fa-users"></i> 5 Seats</span>
                             <span><i class="fas fa-cog"></i> Auto</span>
                             <span><i class="fas fa-star"></i> Popular</span>
                         </div>
+                        <a href="car.php?id=6">View</a>
                     </div>
                 </div>
+
                 <div class="car-card fade-in">
                     <div class="car-image">
-                        <i class="fas fa-car-side"></i>
+                        <img src="carimages/fusion.avif" alt="Ford Fusion" style="height: 150px; border-radius: 10px;">
                     </div>
                     <div class="car-info">
-                        <div class="car-name">Ford Mustang</div>
-                        <div class="car-price">From ₦70,000/day</div>
+                        <div class="car-name">Ford Fusion</div>
+                        <div class="car-price">From $330.00/day</div>
                         <div class="car-features">
                             <span><i class="fas fa-users"></i> 4 Seats</span>
                             <span><i class="fas fa-tachometer-alt"></i> Sport</span>
                             <span><i class="fas fa-crown"></i> Premium</span>
                         </div>
+                        <a href="car.php?id=18">View</a>
                     </div>
                 </div>
             </div>
+            
             <div class="view-all-cars">
                 <a href="cars.php">
                     <i class="fas fa-th-large"></i> View All Cars
@@ -167,8 +170,8 @@
             </div>
         </div>
     </section>
-        <?php  require 'component/footer.php'; ?>
 
+    <?php require 'component/footer.php'; ?>
 
     <script>
         // Smooth scrolling for navigation links

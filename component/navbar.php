@@ -15,7 +15,7 @@
             <div class="container-fluid">
                 <a class="navbar-brand" href="index.php">
                     <i class="fas fa-car brand-icon"></i>
-                    Car Rental Pro
+                    Home page
                 </a>
                 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,8 +35,8 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="pricing.php">
-                                <i class="fas fa-tags"></i> Pricing
+                            <a class="nav-link" href="contact.php">
+                                <i class="fas fa-phone"></i> Contact
                             </a>
                         </li>
                         <li class="nav-item dropdown">
