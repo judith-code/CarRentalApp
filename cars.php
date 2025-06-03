@@ -2,7 +2,7 @@
 require_once 'config/db-connect.php';
 
 // Get cars with enhanced query
-$sql = "SELECT * FROM cars ORDER BY make, model";
+$sql = "SELECT * FROM cars";
 $stmt = $pdo->prepare($sql);
 $stmt->execute();
 $cars = $stmt->fetchAll(PDO::FETCH_ASSOC);

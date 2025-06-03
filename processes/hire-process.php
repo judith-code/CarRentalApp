@@ -53,7 +53,7 @@ $days = $interval->days;
 
 $total_cost = $daily_rate * $days;
 
-$sql = "SELECT * FROM cuctomers WHERE email = ? ";
+$sql = "SELECT * FROM customers WHERE email = ? ";
 $stmt = $pdo->prepare($sql);
 $stmt->execute([$email]);
 $customer = $stmt->fetch(PDO::FETCH_ASSOC);
