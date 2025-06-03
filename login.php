@@ -3,9 +3,9 @@ session_start();
 require_once 'config/db-connect.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $first_name = $_POST['last_name'];
-    $last_name = $_POST['last_name'];
-    $email = $_POST['email'];
+    $first_name = trim($_POST['first_name'] ?? '');
+    $last_name = trim($_POST['last_name'] ?? '');
+    $email = trim($_POST['email'] ?? '');
 
     // Validate email
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -15,15 +15,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Check credentials
-    $query = "SELECT * FROM customers WHERE first_name = ? last_name = ? AND email = ?";
-    $stmt = $pdo->prepare($query);
+    $stmt = $pdo->prepare("SELECT * FROM customers WHERE first_name = ? AND last_name = ? AND email = ?");
     $stmt->execute([$first_name, $last_name, $email]);
-    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    $customer = $stmt->fetch();
 
-    if ($result->num_rows > 0) {
-        $customer = $result->fetch_assoc();
+    if ($customer) {
         $_SESSION['customer_id'] = $customer['id'];
-        header('Location: myrentals.php');
+        $_SESSION['last_activity'] = time(); // For session timeout
+        header('Location: myrental.php');
         exit();
     } else {
         $_SESSION['alert'] = ['type' => 'danger', 'message' => 'Invalid credentials.'];
@@ -36,34 +35,37 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Customer Login</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
 </head>
 <body>
     <?php require 'component/navbar.php'; ?>
-    <div class='container mt-5 mb-5 '>
-        <h1 class='text-center'><i class="fas fa-sign-in-alt"></i> Users Log In</h1>
-        <div>
-        <form action="login.php" method="POST">
-    <div class="mb-3">
-        <label for="firstname">First Name</label>
-        <input type="text" class="form-control" name="first_name" required>
-    </div>
-    <div class="mb-3">
-        <label for="lastname">Last Name</label>
-        <input type="text" class="form-control" name="last_name" required>
-    </div>
-    <div class="mb-3">
-        <label for="email">Email</label>
-        <input type="email" class="form-control" name="email" required>
-    </div>
-    <button type="submit" class="btn btn-primary">Login</button>
-        </form>
-    </div>
-    </div>
-    
+<div class="container py-5">
+    <h2 class="text-center mb-4">Customer Login</h2>
+    <?php if (isset($_SESSION['alert'])): ?>
+        <div class="alert alert-<?= htmlspecialchars($_SESSION['alert']['type']) ?> alert-dismissible fade show">
+            <?= htmlspecialchars($_SESSION['alert']['message']) ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+        <?php unset($_SESSION['alert']); ?>
+    <?php endif; ?>
+    <form action="login.php" method="POST" class="col-md-6 offset-md-3">
+        <div class="mb-3">
+            <label for="lastname" class="form-label">First Name</label>
+            <input type="text" class="form-control" name="first_name" required>
+        </div>
+        <div class="mb-3">
+            <label for="lastname" class="form-label">Last Name</label>
+            <input type="text" class="form-control" name="last_name" required>
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email Address</label>
+            <input type="email" class="form-control" name="email" required>
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Login</button>
+    </form>
+</div>
     <?php require 'component/footer.php'; ?>
-    <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

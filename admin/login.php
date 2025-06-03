@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     try {
-        $query = "SELECT id, user_name, password FROM admins WHERE user_name = :user_name AND email = :email";
+        $query = "SELECT id`, `user_name`, password FROM admins WHERE user_name = :user_name AND email = :email";
         $stmt = $pdo->prepare($query);
         $stmt->execute(['user_name' => $user_name, 'email' => $email]);
         $admin = $stmt->fetch(PDO::FETCH_ASSOC);

@@ -7,18 +7,14 @@ if (!isset($_SESSION['customer_id'])) {
     header('Location: login.php');
     exit();
 }
-
 $customer_id = $_SESSION['customer_id'];
-$query = "SELECT c.firstname, c.lastname, c.email, c.phone, r.*, cars.make, cars.model, cars.daily_rate
-          FROM rentals r
-          JOIN cars ON r.car_id = cars.id
-          JOIN customers c ON r.customer_id = c.id
-          WHERE r.customer_id = ?";
-$stmt = $conn->prepare($query);
-$stmt->bind_param("i", $customer_id);
-$stmt->execute();
-$result = $stmt->get_result();
+$query = "SELECT customers.first_name, customers.last_name, customers.email, customers.phone, rentals.*,cars.make, cars.model, cars.daily_rate, cars.status FROM rentals JOIN cars ON rentals.car_id = cars.id JOIN customers ON rentals.customer_id = customers.id WHERE rentals.customer_id = :customer_id";
+
+$stmt = $pdo->prepare($query);
+$stmt->execute(['customer_id' => $customer_id]);
+$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,22 +38,22 @@ $result = $stmt->get_result();
         </tr>
     </thead>
     <tbody>
-        <?php while ($rental = $result->fetch_assoc()): ?>
-            <?php
-            $status = $rental['rental_status'];
-            if ($rental['rental_status'] === 'active' && strtotime($rental['return_date']) <= time()) {
-                $status = 'due for return';
-            }
-            ?>
+        <?php if ($result): ?>
+            <?php foreach ($result as $row): ?>
+                <tr>
+                    <td><?= htmlspecialchars($row['make'] . ' ' . $row['model']) ?></td>
+                    <td><?= htmlspecialchars($row['daily_rate']) ?></td>
+                    <td><?php echo htmlspecialchars($row['rental_date']); ?></td>
+                    <td><?php echo htmlspecialchars($row['return_date']); ?></td>
+                    <td><?php echo htmlspecialchars($row['total_cost']); ?></td>
+                    <td><?php echo htmlspecialchars($row['status']); ?></td>
+                </tr>
+            <?php endforeach; ?>
+        <?php else: ?>
             <tr>
-                <td><?php echo htmlspecialchars($rental['make'] . ' ' . $rental['model']); ?></td>
-                <td><?php echo htmlspecialchars($rental['daily_rate']); ?></td>
-                <td><?php echo htmlspecialchars($rental['rental_date']); ?></td>
-                <td><?php echo htmlspecialchars($rental['return_date']); ?></td>
-                <td><?php echo htmlspecialchars($rental['total_cost']); ?></td>
-                <td><?php echo htmlspecialchars($status); ?></td>
+                <td colspan="9">No rentals found.</td>
             </tr>
-        <?php endwhile; ?>
+        <?php endif; ?>
     </tbody>
 </table>
 <a href="logout.php" class="btn btn-secondary">Logout</a>

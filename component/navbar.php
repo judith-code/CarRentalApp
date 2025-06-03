@@ -37,6 +37,11 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="about.php">
+                            <i class="fas fa-info-circle "></i> About
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="terms.php">
                             <i class="fas fa-file-alt"></i> T & C
                         </a>
