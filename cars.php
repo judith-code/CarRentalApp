@@ -89,7 +89,7 @@ $rentedCars = array_filter($cars, function($car) {
             </div>
         </div>
 
-        <div class="table-container">
+        <div class="table-container ">
             <div class="table-header">
                 <h2 class="table-title">
                     <i class="fas fa-list-ul me-2"></i>

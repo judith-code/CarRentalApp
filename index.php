@@ -107,6 +107,7 @@
                         <a href="car.php?id=1">View</a>
                     </div>
                 </div>
+                
                 <div class="car-card fade-in">
                     <div class="car-image">
                         <img src="carimages/civic.avif" alt="Honda Civic" style="height: 150px; border-radius: 10px;">
