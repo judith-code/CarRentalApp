@@ -1,34 +1,55 @@
-    body {
-            background-color: #f9f9f9;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      .contact-section h1 {
+            color: #28A745;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
         }
-        .contact-section {
-            padding: 60px 0;
-        }
-        .form-container {
-            background-color: #fff;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
         }
         .form-control {
-            margin-bottom: 20px;
-            border-radius: 8px;
+            border-radius: 10px;
+            padding: 10px;
+            font-size: 0.9rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease;
         }
-        .contact-header {
-            text-align: center;
-            margin-bottom: 40px;
+        .form-control:focus {
+            box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+            border-color: #28A745;
         }
-        .contact-header h2 {
-            font-weight: bold;
+        .form-label {
+            font-weight: 500;
+            color: #333;
         }
         .btn-primary {
-            padding: 10px 30px;
-            font-size: 16px;
-            border-radius: 8px;
+            background-color: #28A745;
+            border: none;
+            padding: 10px 20px;
+            font-size: 0.9rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
-        .back-link {
-            margin-top: 20px;
-            display: flex;
-            justify-content: center;
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(40, 167, 69, 0.4);
+        }
+        .contact-info p {
+            font-size: 1.1rem;
+            color: #333;
+            margin-bottom: 0.75rem;
+        }
+        .contact-info i {
+            color: #28A745;
+            margin-right: 0.5rem;
+        }
+        @media (max-width: 576px) {
+            .contact-section h1 {
+                font-size: 1.5rem;
+            }
+            .contact-info p {
+                font-size: 1rem;
+            }
+            .form-control {
+                font-size: 0.85rem;
+            }
         }

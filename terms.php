@@ -8,8 +8,13 @@
 </head>
 <body>
     <?php require 'component/navbar.php'; ?>
-    <div>
-        hello 
+    <div class="container mt-5">
+        <h1>Terms & Conditions</h1>
+        <ul>
+        <li>Cars must be returned in good condition.</li>
+        <li>Late returns will incur a daily penalty fee.</li>
+        <li>A valid driver’s license is required to rent a car.</li>
+        </ul>
     </div>
 
     <?php require 'component/footer.php'; ?>
