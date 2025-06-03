@@ -52,7 +52,7 @@ unset($_SESSION['hire_success']);
             <h2 class="mb-4">Car Details</h2>
             <div class="row">
                 <div class="col-md-6">
-                    <img src="carimages/<?= htmlspecialchars($selectedCar['carimages'] ?? 'fusion.avif') ?>" alt="Car Image" class="car-image">
+                    <img src="carimages/<?= htmlspecialchars($selectedCar['image']); ?>" class="car-image">
                 </div>
                 <div class="col-md-6">
                     <ul class="list-group list-group-flush">

@@ -94,7 +94,7 @@
             <div class="cars-grid">
                 <div class="car-card fade-in">
                     <div class="car-image">
-                        <img src="carimages/corolla.avif" alt="Toyota Corolla" style="height: 150px; border-radius: 10px;">
+                        <img src="carimages/car1.jpg" alt="Toyota Corolla" style="height: 150px; border-radius: 10px;">
                     </div>
                     <div class="car-info">
                         <div class="car-name">Toyota Corolla</div>
@@ -110,7 +110,7 @@
                 
                 <div class="car-card fade-in">
                     <div class="car-image">
-                        <img src="carimages/civic.avif" alt="Honda Civic" style="height: 150px; border-radius: 10px;">
+                        <img src="carimages/car6.jpg" alt="Honda Civic" style="height: 150px; border-radius: 10px;">
                     </div>
                     <div class="car-info">
                         <div class="car-name">Honda Civic</div>
@@ -126,7 +126,7 @@
 
                 <div class="car-card fade-in">
                     <div class="car-image">
-                        <img src="carimages/fusion.avif" alt="Ford Fusion" style="height: 150px; border-radius: 10px;">
+                        <img src="carimages/car18.jpg" alt="Ford Fusion" style="height: 150px; border-radius: 10px;">
                     </div>
                     <div class="car-info">
                         <div class="car-name">Ford Fusion</div>
