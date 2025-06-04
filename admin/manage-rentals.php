@@ -77,10 +77,12 @@ try {
                         <td><?= htmlspecialchars($status) ?></td>
                         <td>
                             <?php if ($rental['rental_status'] === 'active'): ?>
-                                <a href="mark_returned.php?rental_id=<?= htmlspecialchars($rental['id']) ?>&car_id=<?= htmlspecialchars($rental['car_id']) ?>" 
-                                   class="btn btn-primary">
-                                   Mark as Returned
+                                <a href="mark-return.php?rental_id=<?= urlencode($rental['id']) ?>&car_id=<?= urlencode($rental['car_id']) ?>"
+                                    class="btn btn-primary btn-sm"
+                                    onclick="return confirm('Are you sure you want to mark this rental as returned?');">
+                                    <i class="fas fa-undo"></i> Mark as Returned
                                 </a>
+
                             <?php endif; ?>
                         </td>
                     </tr>

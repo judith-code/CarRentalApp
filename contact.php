@@ -69,7 +69,7 @@ session_start();
 
         <!-- Static Contact Info -->
         <div class="contact-info text-center mt-5">
-            <h2>Our Contact Details</h2>
+            <h2><b>Our Contact Details</b></h2>
             <p><i class="fas fa-envelope"></i>Email: anselemjudith0@gmail.com</p>
             <p><i class="fas fa-phone"></i>Phone: +234 9038 360 889</p>
             <p><i class="fas fa-map-marker-alt"></i>Address: Opposite Agblo top hotel</p>

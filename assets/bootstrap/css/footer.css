@@ -6,6 +6,15 @@
             text-align: center;
         }
 
+        .footer a {
+            text-decoration: none;
+        }
+
+        .footer .social-icons a:hover {
+            color: #ffc107; 
+            transition: color 0.3s;
+        }
+
         .footer h3 {
             font-size: 2rem;
             font-weight: 700;
