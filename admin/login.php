@@ -5,8 +5,8 @@ require_once '../config/db-connect.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user_name = trim($_POST['user_name'] ?? '');
     $email = trim($_POST['email'] ?? '');
-    $password = $_POST['password'] ?? '';
 
+    // Validate email format before database query
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $_SESSION['alert'] = ['type' => 'danger', 'message' => 'Invalid email format.'];
         header('Location: login.php');
@@ -14,17 +14,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     try {
-        $query = "SELECT id`, `user_name`, password FROM admins WHERE user_name = :user_name AND email = :email";
+        // Prepare and execute query
+        $query = "SELECT `id`, `user_name`, `email` FROM `admin` WHERE user_name = ? AND email = ?";
         $stmt = $pdo->prepare($query);
-        $stmt->execute(['user_name' => $user_name, 'email' => $email]);
+        $stmt->execute([$user_name, $email]);
         $admin = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if ($admin && password_verify($password, $admin['password'])) {
+        // Check if admin exists
+        if ($admin) {
             $_SESSION['admin_id'] = $admin['id'];
-            header('Location: dashboard.php');
+            $_SESSION['alert'] = ['type' => 'success', 'message' => 'Login successful.'];
+            header("Location: dashboard.php");
             exit();
         } else {
-            $_SESSION['alert'] = ['type' => 'danger', 'message' => 'Invalid credentials.'];
+            $_SESSION['alert'] = ['type' => 'danger', 'message' => 'Username or email not found.'];
             header('Location: login.php');
             exit();
         }
@@ -35,6 +38,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -48,16 +53,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
     
-    <?php require '../component/navbar.php'; ?>
     <div class="container py-5">
+                <a href="../index.php" class="btn btn-outline-primary">Back to site</a>
+
         <h1 class="text-center mb-4"><i class="fas fa-user-shield"></i> Admin Login</h1>
+    <div>
         <?php if (isset($_SESSION['alert'])): ?>
-            <div class="alert alert-<?= htmlspecialchars($_SESSION['alert']['type']) ?> alert-dismissible fade show" role="alert">
-                <?= htmlspecialchars($_SESSION['alert']['message']) ?>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-            <?php unset($_SESSION['alert']); ?>
-        <?php endif; ?>
+    <div class="alert alert-<?= htmlspecialchars($_SESSION['alert']['type']) ?> alert-dismissible fade show" role="alert">
+        <?= htmlspecialchars($_SESSION['alert']['message']) ?>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <?php unset($_SESSION['alert']); ?>
+<?php endif; ?>
+
+        </div>
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <form action="login.php" method="POST">
@@ -69,10 +78,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <label for="email" class="form-label">Email</label>
                         <input type="email" class="form-control" id="email" name="email" required>
                     </div>
-                    <div class="mb-3">
-                        <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="password" name="password" required>
-                    </div>
                     <button type="submit" class="btn btn-primary">Login</button>
                 </form>
             </div>
@@ -80,7 +85,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
 
     
-    <?php require '../component/footer.php'; ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>

@@ -1,3 +1,6 @@
+.navbar-nav {
+    flex-wrap: wrap;
+}
 .navbar-wrapper {
     position: fixed;
     top: 0;

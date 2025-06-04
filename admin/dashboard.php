@@ -17,16 +17,16 @@ try {
     $total_available = $pdo->query("SELECT COUNT(*) as count FROM cars WHERE status = 'available'")->fetch(PDO::FETCH_ASSOC)['count'];
 
     // Fetch recent rentals
-    $query = "SELECT c.firstname, r.*, cars.make, cars.model, cars.daily_rate
-              FROM rentals r
-              JOIN cars ON r.car_id = cars.id
-              JOIN customers c ON r.customer_id = c.id
-              ORDER BY r.rental_date DESC LIMIT 5";
+    $query = "SELECT customers.first_name, rentals.*, cars.make, cars.model, cars.daily_rate
+              FROM rentals 
+              JOIN cars ON rentals.car_id = cars.id
+              JOIN customers  ON rentals.customer_id = customers.id
+              ORDER BY rentals.rental_date DESC LIMIT 5";
     $stmt = $pdo->prepare($query);
     $stmt->execute();
     $recent_rentals = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
-    $_SESSION['alert'] = ['type' => 'danger', 'message' => 'Database error: Unable to fetch data.'];
+    $_SESSION['alert'] = ['type' => 'danger', 'message' => 'Database error: Unable to fetch rentals.'];
     $recent_rentals = [];
 }
 ?>
@@ -115,7 +115,7 @@ try {
                     }
                     ?>
                     <tr>
-                        <td><?= htmlspecialchars($rental['firstname']) ?></td>
+                        <td><?= htmlspecialchars($rental['first_name']) ?></td>
                         <td><?= htmlspecialchars($rental['make'] . ' ' . $rental['model']) ?></td>
                         <td>$<?= htmlspecialchars(number_format($rental['daily_rate'], 2)) ?></td>
                         <td><?= htmlspecialchars($rental['rental_date']) ?></td>
@@ -129,10 +129,10 @@ try {
         <div class="mt-3">
             <a href="manage-cars.php" class="btn btn-primary">Manage Cars</a>
             <a href="manage-rentals.php" class="btn btn-primary">Manage Rentals</a>
-            <a href="logout.php" class="btn btn-secondary">Logout</a>
+            <a href="login.php" class="btn btn-secondary">Logout</a>
         </div>
     </div>
-    <?php require '../components/footer.php'; ?>
+    <?php require '../component/footer.php'; ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -15,10 +15,7 @@ try {
     $total_earnings = $stmt->fetch(PDO::FETCH_ASSOC)['total_earnings'] ?? 0;
 
     // Fetch rentals
-    $query = "SELECT r.*, c.firstname, c.email, cars.make, cars.model
-              FROM rentals r
-              JOIN cars ON r.car_id = cars.id
-              JOIN customers c ON r.customer_id = c.id";
+    $query = "SELECT rentals.*, customers.first_name, customers.email, cars.make, cars.model FROM rentals JOIN cars ON rentals.car_id = cars.id JOIN customers ON rentals.customer_id = customers.id";
     $stmt = $pdo->query($query);
     $rentals = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
@@ -71,7 +68,7 @@ try {
                     }
                     ?>
                     <tr>
-                        <td><?= htmlspecialchars($rental['firstname']) ?></td>
+                        <td><?= htmlspecialchars($rental['first_name']) ?></td>
                         <td><?= htmlspecialchars($rental['email']) ?></td>
                         <td><?= htmlspecialchars($rental['make'] . ' ' . $rental['model']) ?></td>
                         <td><?= htmlspecialchars($rental['rental_date']) ?></td>
@@ -91,7 +88,7 @@ try {
             </tbody>
         </table>
     </div>
-    <?php require '../components/footer.php'; ?>
+    <?php require '../component/footer.php'; ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
