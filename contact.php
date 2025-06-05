@@ -15,7 +15,7 @@ session_start();
     <?php require 'component/navbar.php'; ?>
 
     <div class="container py-5 contact-section">
-        <!-- Alerts -->
+        <!-- success and error messages -->
         <?php if (isset($_SESSION['alert'])): ?>
             <div class="alert alert-<?= htmlspecialchars($_SESSION['alert']['type']) ?> alert-dismissible fade show" role="alert">
                 <?= htmlspecialchars($_SESSION['alert']['message']) ?>
@@ -62,12 +62,11 @@ session_start();
                     required
                 ><?= isset($_SESSION['form_data']['message']) ? htmlspecialchars($_SESSION['form_data']['message']) : '' ?></textarea>
             </div>
-            <!-- Hidden field for spam protection -->
             <input type="text" name="_gotcha" style="display: none;">
             <button type="submit" class="btn btn-primary">Send Message</button>
         </form>
 
-        <!-- Static Contact Info -->
+        <!-- static information -->
         <div class="contact-info text-center mt-5">
             <h2><b>Our Contact Details</b></h2>
             <p><i class="fas fa-envelope"></i>Email: anselemjudith0@gmail.com</p>

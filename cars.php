@@ -22,6 +22,7 @@ $rentedCars = array_filter($cars, function($car) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Premium Car Rentals - Fleet Overview</title>
+    <!-- css links -->
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -35,23 +36,16 @@ $rentedCars = array_filter($cars, function($car) {
     </div>
 
     <?php require 'component/navbar.php'; ?>
-   <!--- success message --->
-    <?php if (isset($_SESSION['success_message'])): ?>
-    <div class="alert alert-success alert-dismissible fade show m-3" role="alert">
-        <?= htmlspecialchars($_SESSION['success_message']) ?>
+   <!--- success and error message --->
+    <?php if (isset($_SESSION['alert'])): ?>
+    <div class="alert alert-<?= $_SESSION['alert']['type'] ?> alert-dismissible fade show m-3" role="alert">
+        <?= htmlspecialchars($_SESSION['alert']['message']) ?>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
-    <?php unset($_SESSION['success_message']); ?>
+    <?php unset($_SESSION['alert']); ?>
 <?php endif; ?>
 
-<?php if (isset($_SESSION['error_message'])): ?>
-    <div class="alert alert-danger alert-dismissible fade show m-3" role="alert">
-        <?= htmlspecialchars($_SESSION['error_message']) ?>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-    <?php unset($_SESSION['error_message']); ?>
-<?php endif; ?>
-
+<!-- header section -->
     <div class="main-container">
         <div class="header-section">
             <h1 class="header-title">
@@ -89,6 +83,7 @@ $rentedCars = array_filter($cars, function($car) {
             </div>
         </div>
 
+        <!-- display all cars-->
         <div class="table-container ">
             <div class="table-header">
                 <h2 class="table-title">

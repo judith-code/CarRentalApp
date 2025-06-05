@@ -61,26 +61,21 @@
             overflow-y: auto;
         }
 
-        .nav-link {
-            color: var(--text-secondary);
-            padding: 0.75rem 1.5rem;
-            border-radius: 10px;
-            margin: 0.25rem 1rem;
-            transition: all 0.3s ease;
-            border: none;
-            text-decoration: none;
-        }
+        /* Scoped sidebar nav-link styles */
+.sidebar .nav-link {
+    color: #333;
+    border-left: 3px solid transparent;
+    padding: 10px 15px;
+    transition: all 0.3s ease;
+}
 
-        .nav-link:hover, .nav-link.active {
-            background: var(--accent-gradient);
-            color: white;
-            transform: translateX(5px);
-        }
+.sidebar .nav-link.active {
+    background-color: #f0f0f0;
+    border-left: 3px solid #007bff;
+    font-weight: bold;
+    color: #007bff;
+}
 
-        .nav-link i {
-            width: 20px;
-            margin-right: 10px;
-        }
 
         .content-section {
             padding: 3rem;

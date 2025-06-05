@@ -5,41 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - Car Rental</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f8f9fa;
-        }
-        .hero {
-            background-color: #007bff;
-            color: white;
-            padding: 60px 0;
-            text-align: center;
-        }
-        .section-title {
-            font-size: 2rem;
-            margin-bottom: 30px;
-            color: #333;
-        }
-        .team-card {
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            border: none;
-            transition: transform 0.3s;
-        }
-        .team-card:hover {
-            transform: translateY(-5px);
-        }
-        .team-card img {
-            border-top-left-radius: 0.5rem;
-            border-top-right-radius: 0.5rem;
-            height: 300px;
-            object-fit: cover;
-        }
-    </style>
+    <link rel="stylesheet" href="assets/bootstrap/css/about.css">
 </head>
 <body>
     <?php require 'component/navbar.php'; ?>
-
+<!-- header section -->
     <div class="hero">
         <div class="container">
             <h1>About Us</h1>
@@ -47,11 +17,13 @@
         </div>
     </div>
 
+<!-- mission statement -->
     <div class="container my-5">
         <h2 class="section-title text-center">Our Mission</h2>
         <p class="text-center">Our mission is to provide reliable and affordable car rental services tailored to meet the needs of every customer, ensuring comfort, safety, and satisfaction in every journey.</p>
     </div>
-
+    
+<!-- the team -->
     <div class="container my-5">
         <h2 class="section-title text-center">Meet the Team</h2>
         <div class="row g-4 justify-content-center">

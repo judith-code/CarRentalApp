@@ -7,7 +7,7 @@
     <title>Home</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/home.css">
+    <link rel="stylesheet" href="assets/bootstrap/css/home.css">
 </head>
 <body>
     <!-- Navigation -->
@@ -63,7 +63,7 @@
         </div>
     </section>
 
-    <!-- How It Works -->
+    <!-- describing how it works -->
     <section class="section how-it-works">
         <div class="container">
             <h2 class="section-title">How It Works</h2>
@@ -87,7 +87,7 @@
         </div>
     </section>
 
-    <!-- Popular Cars -->
+    <!-- displaying popular Cars -->
     <section class="section popular-cars" id="cars">
         <div class="container">
             <h2 class="section-title">Popular Cars</h2>
@@ -140,6 +140,56 @@
                     </div>
                 </div>
             </div>
+            <div class="cars-grid">
+                <div class="car-card fade-in">
+                    <div class="car-image">
+                        <img src="carimages/car11.jpg" alt="Maruti Alto" style="height: 150px; border-radius: 10px;">
+                    </div>
+                    <div class="car-info">
+                        <div class="car-name">Maruti Alto</div>
+                        <div class="car-price">From $250.00/day</div>
+                        <div class="car-features">
+                            <span><i class="fas fa-users"></i> 4 Seats</span>
+                            <span><i class="fas fa-cog"></i> sport</span>
+                            <span><i class="fas fa-star"></i> Popular</span>
+                        </div>
+                        <a href="car.php?id=11">View</a>
+                    </div>
+                </div>
+
+                <div class="car-card fade-in">
+                    <div class="car-image">
+                        <img src="carimages/car25.jpg" alt="Chevrolet Cruze" style="height: 150px; border-radius: 10px;">
+                    </div>
+                    <div class="car-info">
+                        <div class="car-name">Chevrolet Cruze</div>
+                        <div class="car-price">From $250.00/day</div>
+                        <div class="car-features">
+                            <span><i class="fas fa-users"></i> 5 Seats</span>
+                            <span><i class="fas fa-cog"></i> premium</span>
+                            <span><i class="fas fa-star"></i> Popular</span>
+                        </div>
+                        <a href="car.php?id=25">View</a>
+                    </div>
+                </div>
+
+                <div class="car-card fade-in">
+                    <div class="car-image">
+                        <img src="carimages/car21.jpg" alt="BMW 3 Series" style="height: 150px; border-radius: 10px;">
+                    </div>
+                    <div class="car-info">
+                        <div class="car-name">BMW 3 Series</div>
+                        <div class="car-price">From $180.00/day</div>
+                        <div class="car-features">
+                            <span><i class="fas fa-users"></i> 6 Seats</span>
+                            <span><i class="fas fa-cog"></i> Fuel efficient</span>
+                            <span><i class="fas fa-star"></i> Popular</span>
+                        </div>
+                        <a href="car.php?id=21">View</a>
+                    </div>
+                </div>
+            </div>
+
             
             <div class="view-all-cars">
                 <a href="cars.php">
@@ -149,7 +199,7 @@
         </div>
     </section>
 
-    <!-- Testimonials -->
+    <!-- testimonials section -->
     <section class="section testimonials">
         <div class="container">
             <h2 class="section-title">What Our Customers Say</h2>

@@ -8,6 +8,7 @@ if (!isset($selectedCarId) || !is_numeric($selectedCarId)) {
     exit();
 }
 
+//query to get all cars
 require_once 'config/db-connect.php';
 $stmt = $pdo->prepare("SELECT * FROM cars WHERE id = ?");
 $stmt->execute([$selectedCarId]);
@@ -33,14 +34,15 @@ $imagePath = file_exists("carimages/$imageFile") ? "carimages/$imageFile" : "car
 <body>
 <?php require 'component/navbar.php'; ?>
 
-<div class="container py-5">
-    <?php if (isset($_SESSION['alert'])): ?>
-    <div class="alert alert-<?= htmlspecialchars($_SESSION['alert']['type']) ?> alert-dismissible fade show" role="alert">
+<!-- alert message -->
+<?php if (isset($_SESSION['alert'])): ?>
+    <div class="alert alert-<?= $_SESSION['alert']['type'] ?> alert-dismissible fade show m-3" role="alert">
         <?= htmlspecialchars($_SESSION['alert']['message']) ?>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
     <?php unset($_SESSION['alert']); ?>
 <?php endif; ?>
+
 
     <a href="cars.php" class="btn btn-outline-secondary mb-3">← Back to Cars List</a>
 

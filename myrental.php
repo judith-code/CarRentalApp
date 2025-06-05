@@ -36,7 +36,7 @@ $customer_info = $customer_stmt->fetch(PDO::FETCH_ASSOC);
     
     <div class="container-fluid">
         <div class="dashboard-container">
-            <!-- Dashboard Header -->
+            <!-- header section on customers dashboard-->
             <div class="dashboard-header">
                 <div class="welcome-section">
                     <div class="row align-items-center">
@@ -57,7 +57,7 @@ $customer_info = $customer_stmt->fetch(PDO::FETCH_ASSOC);
                 </div>
             </div>
 
-            <!-- Content Section -->
+            <!-- displaying content on customers rentsls  -->
             <div class="content-section">
                 <h2 class="section-title">
                     <i class="fas fa-history"></i>
@@ -129,7 +129,7 @@ $customer_info = $customer_stmt->fetch(PDO::FETCH_ASSOC);
                     </div>
                 <?php endif; ?>
 
-                <!-- Action Buttons -->
+                <!-- Buttons for other actions-->
                 <div class="action-buttons">
                     <a href="cars.php" class="btn-custom btn-primary-custom">
                         <i class="fas fa-plus"></i>
@@ -137,7 +137,7 @@ $customer_info = $customer_stmt->fetch(PDO::FETCH_ASSOC);
                     </a>
                     <a href="login.php" class="btn-custom btn-secondary-custom">
                         <i class="fas fa-sign-out-alt"></i>
-                        Sign Out
+                        Log Out
                     </a>
                 </div>
             </div>

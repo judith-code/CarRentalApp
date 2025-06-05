@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($customer) {
         $_SESSION['customer_id'] = $customer['id'];
-        $_SESSION['last_activity'] = time(); // For session timeout
+        $_SESSION['last_activity'] = time(); 
         header('Location: myrental.php');
         exit();
     } else {
@@ -36,14 +36,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <title>Customer Login</title>
+    <!-- css links -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-..." crossorigin="anonymous"></script>
-
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
 </head>
 <body>
     <?php require 'component/navbar.php'; ?>
+
 <div class="container py-5">
     <h2 class="text-center mb-4">Customer Login</h2>
+    <!--success and error messages -->
     <?php if (isset($_SESSION['alert'])): ?>
         <div class="alert alert-<?= htmlspecialchars($_SESSION['alert']['type']) ?> alert-dismissible fade show">
             <?= htmlspecialchars($_SESSION['alert']['message']) ?>
@@ -51,6 +53,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
         <?php unset($_SESSION['alert']); ?>
     <?php endif; ?>
+    
+    <!-- log in form -->
     <form action="login.php" method="POST" class="col-md-6 offset-md-3">
         <div class="mb-3">
             <label for="lastname" class="form-label">First Name</label>
@@ -67,6 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <button type="submit" class="btn btn-primary w-100">Login</button>
     </form>
 </div>
+
     <?php require 'component/footer.php'; ?>
 <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
