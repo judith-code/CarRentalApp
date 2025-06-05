@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit();
     }
 
-    // Check credentials
+    // Checking credentials
     $stmt = $pdo->prepare("SELECT * FROM customers WHERE first_name = ? AND last_name = ? AND email = ?");
     $stmt->execute([$first_name, $last_name, $email]);
     $customer = $stmt->fetch();

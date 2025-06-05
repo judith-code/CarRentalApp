@@ -1,23 +1,71 @@
 body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        .card {
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            border: none;
-            border-radius: 12px;
-        }
-        .car-image {
-            height: 200px;
-            width: 100%;
-            object-fit: cover;
-            border-radius: 8px;
-        }
-        .btn-primary {
-            background-color: #007bff;
-            border-color: #007bff;
-        }
-        .btn-primary:hover {
-            background-color: #0056b3;
-            border-color: #004085;
-        }
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #fff;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 960px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.card {
+    background: #fff;
+    border: none;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    color: #333;
+}
+
+.card h2, .card h3 {
+    color: #333;
+}
+
+.img-fluid {
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+    transition: 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-outline-secondary {
+    border-radius: 30px;
+    transition: 0.3s;
+}
+
+.list-group-item {
+    background: #f8f9fa;
+    border: none;
+    border-radius: 8px;
+    margin-bottom: 8px;
+}
+
+form .form-control {
+    border-radius: 10px;
+    padding: 10px;
+}
+
+form label {
+    font-weight: 500;
+}
+
+.note-section {
+    background-color: #f0f0f0;
+    color: #333;
+    border-radius: 8px;
+    padding: 10px 15px;
+    margin-top: 20px;
+    font-size: 0.95rem;
+}

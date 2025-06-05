@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $return_date = $_POST['return_date'] ?? null;
     $rental_date = date('Y-m-d');
 
-    $_SESSION['form_data'] = $_POST; // Save form input in session for reuse on errors
+    $_SESSION['form_data'] = $_POST;
 
     // Validation
     if (!$car_id || !$return_date || !$first_name || !$last_name || !$email || !$phone) {

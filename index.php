@@ -10,10 +10,10 @@
     <link rel="stylesheet" href="assets/bootstrap/css/home.css">
 </head>
 <body>
-    <!-- Navigation -->
+    <!-- Navbar -->
     <?php require 'component/navbar.php'; ?>
 
-    <!-- Hero Section -->
+    <!-- Header Section -->
     <section class="hero" id="home">
         <div class="hero-content">
             <h1>Find the Perfect Ride for Every Journey</h1>
@@ -29,7 +29,7 @@
     <!-- Features Section -->
     <section class="section features" id="features">
         <div class="container">
-            <h2 class="section-title">Why Choose DriveEasy?</h2>
+            <h2 class="section-title">Why Choose MJ-Rentals?</h2>
             <div class="features-grid">
                 <div class="feature-card fade-in">
                     <div class="feature-icon">
@@ -221,6 +221,7 @@
             </div>
         </div>
     </section>
+
 
     <?php require 'component/footer.php'; ?>
 

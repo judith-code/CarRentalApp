@@ -27,28 +27,28 @@
                     <div class="sidebar">
                         <nav class="nav flex-column">
                             <a class="nav-link active" href="#agreement" data-bs-toggle="pill">
-                                <i class="fas fa-handshake"></i>Rental Agreement
+                                <i class="fas fa-handshake"></i> Rental Agreement
                             </a>
                             <a class="nav-link" href="#eligibility" data-bs-toggle="pill">
-                                <i class="fas fa-user-check"></i>Eligibility
+                                <i class="fas fa-user-check"></i> Eligibility
                             </a>
                             <a class="nav-link" href="#vehicle-condition" data-bs-toggle="pill">
-                                <i class="fas fa-car"></i>Vehicle Condition
+                                <i class="fas fa-car"></i> Vehicle Condition
                             </a>
                             <a class="nav-link" href="#payment" data-bs-toggle="pill">
-                                <i class="fas fa-credit-card"></i>Payment Terms
+                                <i class="fas fa-credit-card"></i> Payment Terms
                             </a>
                             <a class="nav-link" href="#insurance" data-bs-toggle="pill">
-                                <i class="fas fa-shield-alt"></i>Insurance
+                                <i class="fas fa-shield-alt"></i> Insurance
                             </a>
                             <a class="nav-link" href="#liability" data-bs-toggle="pill">
-                                <i class="fas fa-exclamation-triangle"></i>Liability
+                                <i class="fas fa-exclamation-triangle"></i> Liability
                             </a>
                             <a class="nav-link" href="#cancellation" data-bs-toggle="pill">
-                                <i class="fas fa-times-circle"></i>Cancellation
+                                <i class="fas fa-times-circle"></i> Cancellation
                             </a>
                             <a class="nav-link" href="#contact" data-bs-toggle="pill">
-                                <i class="fas fa-phone"></i>Contact Us
+                                <i class="fas fa-phone"></i> Contact Us
                             </a>
                         </nav>
                     </div>
@@ -152,12 +152,12 @@
                                     
                                     <ul class="terms-list">
                                         <li>Basic liability insurance is included with all rentals.</li>
-                                        <li data-="💥">Collision Damage Waiver (CDW): $15-25 per day (optional but recommended).</li>
-                                        <li data-="🔓">Theft Protection: $8 per day (optional).</li>
-                                        <li data-="🏥">Personal Accident Insurance: $6 per day (optional).</li>
-                                        <li data-="🧳">Personal Effects Coverage: $4 per day (optional).</li>
-                                        <li data-="📞">Roadside Assistance: Included 24/7 for all rentals.</li>
-                                        <li data-="⚠️">Insurance coverage may be void if terms are violated.</li>
+                                        <li>Collision Damage Waiver (CDW): $15-25 per day (optional but recommended).</li>
+                                        <li >Theft Protection: $8 per day (optional).</li>
+                                        <li>Personal Accident Insurance: $6 per day (optional).</li>
+                                        <li>Personal Effects Coverage: $4 per day (optional).</li>
+                                        <li>Roadside Assistance: Included 24/7 for all rentals.</li>
+                                        <li>Insurance coverage may be void if terms are violated.</li>
                                     </ul>
 
                                     <div class="highlight-box">
@@ -207,7 +207,7 @@
                                 </div>
                             </div>
 
-                            <!-- Contact Information -->
+                            <!-- Contact information for any questions -->
                             <div class="tab-pane fade" id="contact">
                                 <div class="terms-section">
                                     <h2 class="section-title">Contact Information</h2>
@@ -245,9 +245,9 @@
         </div>
     </div>
 
-    <!-- Scroll to Top Button -->
+   <!-- Scroll to Top Button -->
     <button class="scroll-to-top" id="scrollToTop">
-        <i class="fas fa-arrow-up"></i>
+        <i class="fas fa-arrow-up">top</i>
     </button>
 
     <?php require 'component/footer.php'; ?>

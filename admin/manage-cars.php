@@ -157,6 +157,7 @@ try {
                                                     onclick="confirmDelete(<?= htmlspecialchars($car['id']) ?>, '<?= htmlspecialchars($car['make'] . ' ' . $car['model']) ?>')">
                                                 <i class="fas fa-trash-alt me-1"></i>Delete
                                             </button>
+                                            <a href="edit-cars.php?id=<?= htmlspecialchars($car['id']); ?> " class="btn btn-primary btn-sm">Edit</a>
                                         <?php else: ?>
                                             <button class="btn btn-secondary btn-sm" disabled>
                                                 <i class="fas fa-lock me-1"></i>Rented

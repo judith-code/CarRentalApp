@@ -30,20 +30,10 @@ $imagePath = file_exists("carimages/$imageFile") ? "carimages/$imageFile" : "car
     <meta charset="UTF-8">
     <title>Car Details</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/bootstrap/css/car.css">
 </head>
 <body>
-<?php require 'component/navbar.php'; ?>
-
-<!-- alert message -->
-<?php if (isset($_SESSION['alert'])): ?>
-    <div class="alert alert-<?= $_SESSION['alert']['type'] ?> alert-dismissible fade show m-3" role="alert">
-        <?= htmlspecialchars($_SESSION['alert']['message']) ?>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-    <?php unset($_SESSION['alert']); ?>
-<?php endif; ?>
-
-
+<div class="container  mt-5 mb-5 ">
     <a href="cars.php" class="btn btn-outline-secondary mb-3">← Back to Cars List</a>
 
     <div class="card p-4 shadow-sm mb-4">
@@ -60,6 +50,9 @@ $imagePath = file_exists("carimages/$imageFile") ? "carimages/$imageFile" : "car
                     <li class="list-group-item"><strong>Daily Rate:</strong> $<?= number_format($selectedCar['daily_rate'], 2) ?></li>
                     <li class="list-group-item"><strong>Status:</strong> <?= ucfirst(htmlspecialchars($selectedCar['status'])) ?></li>
                 </ul>
+            </div>
+            <div class="note-section">
+                <p><strong>NOTE: </strong>Please read our <a href="terms.php">T&C</a> carefully before hiring a car.</p>
             </div>
         </div>
     </div>
@@ -103,7 +96,9 @@ $imagePath = file_exists("carimages/$imageFile") ? "carimages/$imageFile" : "car
             <button type="submit" class="btn btn-primary w-100">Confirm Hire</button>
         </form>
     </div>
+    </div>
 </div>
+<?php require 'component/navbar.php'; ?>
 
 <?php require 'component/footer.php'; ?>
 <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>

@@ -18,7 +18,7 @@ if ($rental_id <= 0 || $car_id <= 0) {
 }
 
 try {
-    // Check if rental exists and is active
+    // Check if rental exists and is active 
     $stmt = $pdo->prepare("SELECT id FROM rentals WHERE id = :id AND rental_status = 'active'");
     $stmt->execute(['id' => $rental_id]);
 

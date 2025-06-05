@@ -1,4 +1,5 @@
 <?php 
+session_start();
 require_once 'config/db-connect.php';
 
 // Get cars with enhanced query

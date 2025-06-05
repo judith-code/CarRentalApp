@@ -14,7 +14,7 @@ $stmt = $pdo->prepare($query);
 $stmt->execute(['customer_id' => $customer_id]);
 $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-// Get customer info for welcome message
+// Geting customer info for welcome message
 $customer_query = "SELECT first_name, last_name FROM customers WHERE id = :customer_id";
 $customer_stmt = $pdo->prepare($customer_query);
 $customer_stmt->execute(['customer_id' => $customer_id]);
