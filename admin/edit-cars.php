@@ -28,16 +28,15 @@ if ($id) {
     $messageType = "danger";
 }
 
-// Handle form submission
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && $car) {
     $make = trim($_POST['make'] ?? '');
     $model = trim($_POST['model'] ?? '');
     $year = $_POST['year'] ?? null;
     $daily_rate = $_POST['daily_rate'] ?? null;
     $status = $_POST['status'] ?? '';
-    $currentImage = $car['image']; // Keep current image as default
+    $currentImage = $car['image'];
     
-    // Validate required fields
+    // Validating required fields
     if ($make && $model && $year && $daily_rate && $status) {
         try {
             // Handle file upload if new image is provided
@@ -70,7 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $car) {
                 }
             }
             
-            // Update database
+            // query to update cars in the database
             $query = "UPDATE `cars` SET `make` = ?, `model` = ?, `year` = ?, `daily_rate` = ?, `status` = ?, `image` = ? WHERE `id` = ?";
             $stmt = $pdo->prepare($query);
             $stmt->execute([$make, $model, $year, $daily_rate, $status, $currentImage, $id]);
@@ -78,7 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $car) {
             $message = "Car updated successfully!";
             $messageType = "success";
             
-            // Refresh car data
+            // Refreshing car data
             $stmt = $pdo->prepare("SELECT * FROM `cars` WHERE `id` = ?");
             $stmt->execute([$id]);
             $car = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -93,18 +92,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $car) {
     }
 }
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Update Car - Car Rental System</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../assets/bootstrap/css/editcars.css">
+    <link rel="stylesheet" href="../assets/bootstrap/css/footer.css">
 </head>
 <body>
     <?php require '../component/admin-navbar.php'; ?>
+
     <div class="container py-5">
         <div class="row justify-content-center">
             <div class="col-lg-8 col-md-10">
@@ -245,9 +248,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $car) {
         </div>
     </div>
 
-    <?php require '../component/admin-navbar.php'; ?>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script>
         function previewImage() {
             const file = document.getElementById('image').files[0];
@@ -285,5 +286,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $car) {
             });
         }, 5000);
     </script>
+
+        <?php require '../component/footer.php'; ?>
+        
+        <script src="../assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>

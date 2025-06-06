@@ -8,9 +8,11 @@ if (!isset($_SESSION['admin_id'])) {
 
 require_once '../config/db-connect.php';
 
+//query to fetch cars
 try {
     $query = "SELECT * FROM cars ORDER BY make, model";
-    $stmt = $pdo->query($query);
+    $stmt = $pdo->prepare($query);
+    $stmt->execute();
     $cars = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
     $_SESSION['alert'] = ['type' => 'danger', 'message' => 'Database error: Unable to fetch cars.'];
@@ -27,6 +29,7 @@ try {
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../assets/bootstrap/css/manage-cars.css">
+    <link rel="stylesheet" href="../assets/bootstrap/css/footer.css">
 </head>
 <body>
     <?php require '../component/admin-navbar.php'; ?>

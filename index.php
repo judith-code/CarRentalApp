@@ -221,11 +221,15 @@
             </div>
         </div>
     </section>
-
+    <button class="scroll-to-top btn btn-primary btn-lg align-right" id="scrollToTop" aria-label="Scroll to top"><i class="fas fa-arrow-up"></i></button>
 
     <?php require 'component/footer.php'; ?>
 
     <script>
+    document.getElementById('scrollToTop').addEventListener('click', function () {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {

@@ -15,30 +15,20 @@ try {
     $total_earnings = $stmt->fetch(PDO::FETCH_ASSOC)['total_earnings'] ?? 0;
 
     // Fetching rental statistics
-    $query = "SELECT 
-                COUNT(*) as total_rentals,
-                SUM(CASE WHEN rental_status = 'active' THEN 1 ELSE 0 END) as active_rentals,
-                SUM(CASE WHEN rental_status = 'completed' THEN 1 ELSE 0 END) as completed_rentals,
-                SUM(CASE WHEN rental_status = 'active' AND return_date < CURDATE() THEN 1 ELSE 0 END) as overdue_rentals
-              FROM rentals";
+    $query = "SELECT COUNT(*) as total_rentals, SUM(CASE WHEN rental_status = 'active' THEN 1 ELSE 0 END) as active_rentals, SUM(CASE WHEN rental_status = 'completed' THEN 1 ELSE 0 END) as completed_rentals, SUM(CASE WHEN rental_status = 'active' AND return_date < CURDATE() THEN 1 ELSE 0 END) as overdue_rentals FROM rentals";
     $stmt = $pdo->query($query);
     $stats = $stmt->fetch(PDO::FETCH_ASSOC);
 
     // Fetching all rentals from database
-    $query = "SELECT rentals.*, customers.first_name, customers.last_name, customers.email, customers.phone, 
-                     cars.make, cars.model, cars.year 
-              FROM rentals 
-              JOIN cars ON rentals.car_id = cars.id 
-              JOIN customers ON rentals.customer_id = customers.id 
-              ORDER BY rentals.rental_date DESC";
-    $stmt = $pdo->query($query);
+    $query = "SELECT rentals.*, customers.first_name, customers.last_name, customers.email, customers.phone, cars.make, cars.model, cars.year FROM rentals JOIN cars ON rentals.car_id = cars.id JOIN customers ON rentals.customer_id = customers.id ORDER BY rentals.rental_date DESC";
+    $stmt = $pdo->prepare($query);
+    $stmt->execute();
     $rentals = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     // Calculate earnings for current month
-    $query = "SELECT SUM(total_cost) as monthly_earnings 
-              FROM rentals 
-              WHERE MONTH(rental_date) = MONTH(CURDATE()) AND YEAR(rental_date) = YEAR(CURDATE())";
-    $stmt = $pdo->query($query);
+    $query = "SELECT SUM(total_cost) as monthly_earnings FROM rentals WHERE MONTH(rental_date) = MONTH(CURDATE()) AND YEAR(rental_date) = YEAR(CURDATE())";
+    $stmt = $pdo->prepare($query);
+    $stmt->execute();
     $monthly_earnings = $stmt->fetch(PDO::FETCH_ASSOC)['monthly_earnings'] ?? 0;
 
 } catch (PDOException $e) {
@@ -58,7 +48,8 @@ try {
     <title>Rental Management - Car Rental Admin</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/bootstrap/css/manage-rentals.css">    
+    <link rel="stylesheet" href="../assets/bootstrap/css/manage-rentals.css"> 
+    <link rel="stylesheet" href="../assets/bootstrap/css/footer.css">  
 </head>
 <body>
     <?php require '../component/admin-navbar.php'; ?>
@@ -312,6 +303,7 @@ try {
                 this.style.transform = 'translateY(0) scale(1)';
             });
         });
+
     </script>
 </body>
 </html>

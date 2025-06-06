@@ -30,6 +30,26 @@ $rentedCars = array_filter($cars, function($car) {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/bootstrap/css/cars.css">
+    <style>
+                    .scroll-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: none; /* hidden by default */
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 10px 16px;
+    cursor: pointer;
+    z-index: 9999;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.scroll-to-top:hover {
+    background-color: #0056b3;
+}
+    </style>
 </head>
 <body>
     <div class="loading-overlay" id="loadingOverlay">
@@ -184,6 +204,8 @@ $rentedCars = array_filter($cars, function($car) {
         </div>
     </div>
 
+<button class="scroll-to-top btn btn-primary btn-lg align-right" id="scrollToTop" aria-label="Scroll to top"><i class="fas fa-arrow-up"></i></button>
+
     <?php require 'component/footer.php'; ?>
 
     <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -279,6 +301,9 @@ $rentedCars = array_filter($cars, function($car) {
             // Initialize
             hideLoading();
         });
+    document.getElementById('scrollToTop').addEventListener('click', function () {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
     </script>
 </body>
 </html>

@@ -15,14 +15,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $daily_rate = (float)($_POST['daily_rate'] ?? 0);
     $image = $_FILES['image'] ?? null;
 
-    // Validate inputs
+    // Validating  inputs
     if (empty($make) || empty($model) || $year < 1900 || $year > date('Y') || $daily_rate <= 0) {
         $_SESSION['alert'] = ['type' => 'danger', 'message' => 'Invalid input data.'];
         header('Location: manage-cars.php');
         exit();
     }
 
-    // Validate image
+    // Validating image
     if (!$image || $image['error'] !== UPLOAD_ERR_OK) {
         $_SESSION['alert'] = ['type' => 'danger', 'message' => 'Image upload failed.'];
         header('Location: manage-cars.php');
@@ -50,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     try {
-        // Insert car
+        // query to insert car
         $query = "INSERT INTO cars (make, model, year, daily_rate, status, image) VALUES (:make, :model, :year, :daily_rate, 'available', :image)";
         $stmt = $pdo->prepare($query);
         $stmt->execute([

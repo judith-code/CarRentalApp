@@ -20,9 +20,7 @@ if (!$selectedCar || strtolower($selectedCar['status']) !== 'available') {
     exit();
 }
 
-// Image fallback
-$imageFile = basename($selectedCar['image'] ?? 'default.jpg');
-$imagePath = file_exists("carimages/$imageFile") ? "carimages/$imageFile" : "carimages/default.jpg";
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,11 +34,13 @@ $imagePath = file_exists("carimages/$imageFile") ? "carimages/$imageFile" : "car
 <div class="container  mt-5 mb-5 ">
     <a href="cars.php" class="btn btn-outline-secondary mb-3">← Back to Cars List</a>
 
+    <!-- displaying car details -->
     <div class="card p-4 shadow-sm mb-4">
         <h2 class="mb-4">Car Details</h2>
         <div class="row">
             <div class="col-md-6 text-center">
-                <img src="<?= htmlspecialchars($imagePath) ?>" alt="<?= htmlspecialchars($selectedCar['make'] . ' ' . $selectedCar['model']) ?>" class="img-fluid rounded" style="max-width: 300px;">
+               <!--<img src="<?= htmlspecialchars($imagePath) ?>" alt="<?= htmlspecialchars($selectedCar['make'] . ' ' . $selectedCar['model']) ?>" class="img-fluid rounded" style="max-width: 300px;"> -->
+               <img src="carimages/<?php echo $selectedCar['image'] ?>" >
             </div>
             <div class="col-md-6">
                 <ul class="list-group">
@@ -71,6 +71,7 @@ $imagePath = file_exists("carimages/$imageFile") ? "carimages/$imageFile" : "car
             }
             ?>
 
+            <!-- hiring form -->
             <div class="mb-3">
                 <label for="return_date" class="form-label">Return Date</label>
                 <input type="date" name="return_date" id="return_date" class="form-control" required

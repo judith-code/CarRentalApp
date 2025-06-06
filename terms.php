@@ -245,13 +245,16 @@
         </div>
     </div>
 
-   <!-- Scroll to Top Button -->
-    <button class="scroll-to-top" id="scrollToTop">
-        <i class="fas fa-arrow-up">top</i>
-    </button>
+    <button class="scroll-to-top btn btn-primary btn-lg align-right" id="scrollToTop" aria-label="Scroll to top"><i class="fas fa-arrow-up"></i></button>
 
     <?php require 'component/footer.php'; ?>
     
     <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script>
+      
+    document.getElementById('scrollToTop').addEventListener('click', function () {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    </script>
 </body>
 </html>
