@@ -110,17 +110,17 @@
                 
                 <div class="car-card fade-in">
                     <div class="car-image">
-                        <img src="carimages/car6.jpg" alt="Honda Civic" style="height: 150px; border-radius: 10px;">
+                        <img src="carimages/car13.jpg" alt="Ford Kuga" style="height: 150px; border-radius: 10px;">
                     </div>
                     <div class="car-info">
-                        <div class="car-name">Honda Civic</div>
-                        <div class="car-price">From $180.00/day</div>
+                        <div class="car-name">Ford Kuga</div>
+                        <div class="car-price">From $220.00/day</div>
                         <div class="car-features">
                             <span><i class="fas fa-users"></i> 5 Seats</span>
                             <span><i class="fas fa-cog"></i> Auto</span>
                             <span><i class="fas fa-star"></i> Popular</span>
                         </div>
-                        <a href="car.php?id=6">View</a>
+                        <a href="car.php?id=13">View</a>
                     </div>
                 </div>
 
