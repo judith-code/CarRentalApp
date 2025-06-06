@@ -71,7 +71,7 @@ if (!$selectedCar || strtolower($selectedCar['status']) !== 'available') {
             }
             ?>
 
-            <!-- hiring form -->
+            <!-- form to hire a selected car -->
             <div class="mb-3">
                 <label for="return_date" class="form-label">Return Date</label>
                 <input type="date" name="return_date" id="return_date" class="form-control" required

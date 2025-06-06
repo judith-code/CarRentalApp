@@ -46,21 +46,23 @@ try {
     <!-- admin navbar-->
     <?php require '../component/admin-navbar.php'; ?>
 
-    <div class="container py-4">
-        <!-- Dashboard Header -->
-        <div class="dashboard-header text-center">
-            <h1 class="mb-2 fw-bold"><i class="fas fa-tachometer-alt me-3"></i>Admin Dashboard</h1>
-            <p class="mb-0 opacity-75">Manage your car rental business efficiently</p>
-        </div>
-
-        <!-- error & success message -->
-        <?php if (isset($_SESSION['alert'])): ?>
+    <!-- error & success message -->
+        <div class="mt-2">
+            <?php if (isset($_SESSION['alert'])): ?>
             <div class="alert alert-<?= htmlspecialchars($_SESSION['alert']['type']) ?> alert-dismissible fade show" role="alert">
                 <?= htmlspecialchars($_SESSION['alert']['message']) ?>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         <?php unset($_SESSION['alert']); ?>
         <?php endif; ?>
+        </div>
+
+    <div class="container py-4 mt-3">
+        <!-- Dashboard Header -->
+        <div class="dashboard-header text-center">
+            <h1 class="mb-2 fw-bold"><i class="fas fa-tachometer-alt me-3"></i>Admin Dashboard</h1>
+            <p class="mb-0 opacity-75">Manage your car rental business efficiently</p>
+        </div>
 
         <!-- Statistics Cards -->
         <div class="row g-4 mb-4">

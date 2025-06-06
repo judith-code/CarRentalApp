@@ -17,7 +17,7 @@
                     <i class="fas fa-car text-primary"></i>
                 </div>
                 <span class="brand-text">
-                    <span class="text-primary">Car</span>Rental
+                    <span class="text-primary">MJ </span>Rentals
                     <small class="text-muted ms-2 d-none d-md-inline">Admin Portal</small>
                 </span>
             </a>
